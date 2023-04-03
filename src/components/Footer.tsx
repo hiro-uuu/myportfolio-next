@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
     <>
       <hr />
       <div className="footer-container">
-        <p>© {new Date().getFullYear()} hiro-uuu's Portfolio</p>
+        <p>© {new Date().getFullYear()} hiro-uuu Portfolio</p>
         <div className="social_icons">
           <a
             href="https://twitter.com/olawanle_joel"
