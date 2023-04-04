@@ -7,6 +7,10 @@ import DrawerMenu from "@/components/DrawerMenu";
 import MenuBar from "@/components/MenuBar";
 import Header from "@/components/Header";
 import React from "react";
+import Profile from "@/components/Profile";
+import Skill from "@/components/Skill";
+import Gallary from "@/components/Gallary";
+import Career from "@/components/Career";
 
 export default function RootLayout({
   children,
@@ -44,7 +48,11 @@ export default function RootLayout({
         <MenuBar toggleDrawer={toggleDrawer} />
         <Header />
         <DrawerMenu toggleDrawer={toggleDrawer} stateDrawer={stateDrawer} />
+        <Profile />
+        <Skill />
+        <Career />
         <Navbar />
+        <Gallary />
         {/* <main>{children}</main> */}
         <Footer />
       </body>

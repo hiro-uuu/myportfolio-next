@@ -41,17 +41,19 @@ export default function DrawerMenu(props: any) {
       onKeyDown={props.toggleDrawer(false)}
     >
       <List>
-        {["ホーム", "自己紹介", "プロダクト", "いろいろ"].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemIcon>
-                {/* TODO 適当にアイコン設定する */}
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-              </ListItemIcon>
-              <ListItemText primary={text} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        {["ホーム", "プロフィール", "スキル", "ギャラリー"].map(
+          (text, index) => (
+            <ListItem key={text} disablePadding>
+              <ListItemButton>
+                <ListItemIcon>
+                  {/* TODO 適当にアイコン設定する */}
+                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                </ListItemIcon>
+                <ListItemText primary={text} />
+              </ListItemButton>
+            </ListItem>
+          )
+        )}
       </List>
       <Divider />
     </Box>

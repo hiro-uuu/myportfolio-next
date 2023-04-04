@@ -23,7 +23,7 @@ export default function MenuBar(props: any) {
     setAnchorElNav(null);
   };
 
-  const pages = ["プロフィール", "あああ", "いいい"];
+  const pages = ["プロフィール", "スキル", "ギャラリー"];
 
   return (
     <AppBar position="static" color="transparent">
