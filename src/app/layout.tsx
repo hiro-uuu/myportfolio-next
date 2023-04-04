@@ -5,6 +5,7 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import DrawerMenu from "@/components/DrawerMenu";
 import MenuBar from "@/components/MenuBar";
+import Header from "@/components/Header";
 import React from "react";
 
 export default function RootLayout({
@@ -41,6 +42,7 @@ export default function RootLayout({
       </head>
       <body>
         <MenuBar toggleDrawer={toggleDrawer} />
+        <Header />
         <DrawerMenu toggleDrawer={toggleDrawer} stateDrawer={stateDrawer} />
         <Navbar />
         {/* <main>{children}</main> */}
