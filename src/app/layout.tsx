@@ -10,6 +10,7 @@ import React from "react";
 import Profile from "@/components/Profile";
 import Skill from "@/components/Skill";
 import Gallary from "@/components/Gallary";
+import Map from "@/components/Map";
 import Career from "@/components/Career";
 
 export default function RootLayout({
@@ -50,7 +51,7 @@ export default function RootLayout({
         <DrawerMenu toggleDrawer={toggleDrawer} stateDrawer={stateDrawer} />
         <Profile />
         <Skill />
-        <Career />
+        <Map />
         <Navbar />
         <Gallary />
         {/* <main>{children}</main> */}
