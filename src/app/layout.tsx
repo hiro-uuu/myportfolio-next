@@ -12,6 +12,7 @@ import Skill from "@/components/Skill";
 import Gallary from "@/components/Gallary";
 import Map from "@/components/Map";
 import Career from "@/components/Career";
+import MapContent from "@/components/MapContent";
 
 export default function RootLayout({
   children,
@@ -51,8 +52,7 @@ export default function RootLayout({
         <DrawerMenu toggleDrawer={toggleDrawer} stateDrawer={stateDrawer} />
         <Profile />
         <Skill />
-        <Map />
-        <Navbar />
+        <MapContent />
         <Gallary />
         {/* <main>{children}</main> */}
         <Footer />
