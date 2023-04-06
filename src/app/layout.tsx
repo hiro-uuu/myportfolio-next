@@ -1,24 +1,34 @@
 "use client";
 
 import "./globals.css";
-import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import DrawerMenu from "@/components/DrawerMenu";
 import MenuBar from "@/components/MenuBar";
-import Header from "@/components/Header";
 import React from "react";
-import Profile from "@/components/Profile";
-import Skill from "@/components/Skill";
-import Gallary from "@/components/Gallary";
-import Map from "@/components/Map";
-import Career from "@/components/Career";
-import MapContent from "@/components/MapContent";
+import { Avatar, Fab, IconButton } from "@mui/material";
+import { ArrowUpward, ArrowUpwardRounded } from "@mui/icons-material";
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.pageYOffset > 500) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   /**
    *
    * @param anchor ドロワーメニューを開閉します。
@@ -37,6 +47,14 @@ export default function RootLayout({
       setStateDrawer(open);
     };
   const [stateDrawer, setStateDrawer] = React.useState(false); //ドロワーの表示状態です。
+  const [showButton, setShowButton] = React.useState(false);
+
+  const handleButtonClick = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
 
   return (
     <html lang="ja">
@@ -48,13 +66,20 @@ export default function RootLayout({
       </head>
       <body>
         <MenuBar toggleDrawer={toggleDrawer} />
-        <Header />
         <DrawerMenu toggleDrawer={toggleDrawer} stateDrawer={stateDrawer} />
-        <Profile />
-        <Skill />
-        <MapContent />
-        <Gallary />
-        {/* <main>{children}</main> */}
+        {children}
+        <Fab
+          color="primary"
+          style={{
+            position: "fixed",
+            bottom: "30px",
+            right: "16px",
+            display: showButton ? "inline-flex" : "none",
+          }}
+          onClick={handleButtonClick}
+        >
+          <ArrowUpward />
+        </Fab>
         <Footer />
       </body>
     </html>
