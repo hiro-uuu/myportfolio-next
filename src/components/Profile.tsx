@@ -91,6 +91,10 @@ const Profile: React.FC = () => {
               <br />
               主にReact✖︎TypeScriptでのフロントエンドの開発をこれまで行ってまいりましたが、分野に捉われす幅広く技術を身につけていければと考えています。
               <br />
+              地図アプリケーションの作成に幅広く携わりました。Webに埋め込む地図ライブラリ（OpenLayers,
+              Leaflet）や、GISエンジン（GeoServer, ArcGIS,
+              GeognoSIS）も触ってきました。
+              <br />
               エンジニア歴は3年目で、まだまだ若輩者ではございますが、どうぞよろしくお願いします。
               <br />
             </Typography>

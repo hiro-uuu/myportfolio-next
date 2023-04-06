@@ -20,16 +20,14 @@ const Skill: React.FC = () => {
           <Grid item xs={12} marginTop={10}>
             <Box maxWidth={400}>
               <Typography variant="h4">触ったことのある技術</Typography>
-              <ProgressBar skill="React" value={50} />
+              <ProgressBar skill="React" value={75} />
               <ProgressBar skill="C# (.Net Core)" value={50} />
-              <ProgressBar skill="GIS (地理情報システム)" value={50} />
-              <ProgressBar skill="PostgreSQL" value={50} />
-              <ProgressBar skill="SQLSever" value={50} />
-              <ProgressBar skill="Nginx" value={50} />
-              <ProgressBar skill="IIS" value={50} />
-              <ProgressBar skill="Visual Studio Code" value={50} />
-              <ProgressBar skill="Visual Studio" value={50} />
-              <ProgressBar skill="AWS" value={50} />
+              <ProgressBar skill="GIS (地理情報システム)" value={75} />
+              <ProgressBar skill="PostgreSQL" value={40} />
+              <ProgressBar skill="SQLSever" value={40} />
+              <ProgressBar skill="Nginx" value={30} />
+              <ProgressBar skill="IIS" value={30} />
+              <ProgressBar skill="AWS" value={20} />
             </Box>
           </Grid>
         </Grid>
