@@ -17,14 +17,7 @@ const HeaderContent = styled(Grid)({
 });
 
 const Header: React.FC = () => {
-  return (
-    <HeaderContent container>
-      {/* <Typography variant="h3">あいうえお</Typography> */}
-      {/* <Grid item xs={12} sm={6}>
-     
-      </Grid> */}
-    </HeaderContent>
-  );
+  return <HeaderContent container></HeaderContent>;
 };
 
 export default Header;

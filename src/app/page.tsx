@@ -1,24 +1,36 @@
-import Image from "next/image";
-import { Inter } from "next/font/google";
-import styles from "./page.module.css";
+"use client";
 
-const inter = Inter({ subsets: ["latin"] });
+import Profile from "@/components/Profile";
+import Gallary from "@/components/Gallary";
+import MapContent from "@/components/MapContent";
+import Skill from "@/components/Skill";
+import Header from "@/components/Header";
+import { Element } from "react-scroll";
 
 export default function Home() {
   return (
-    <main className={styles.main}>
-      <div className={styles.grid}>
-        <a
-          href="https://beta.nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <p className={inter.className}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-      </div>
+    <main>
+      <Header />
+      <Element name="profile" className="element">
+        <div id="profile">
+          <Profile />
+        </div>
+      </Element>
+      <Element name="skill" className="element">
+        <div id="skill">
+          <Skill />
+        </div>
+      </Element>
+      <Element name="mapcontent" className="element">
+        <div id="mapcontent">
+          <MapContent />
+        </div>
+      </Element>
+      <Element name="gallary" className="element">
+        <div id="gallary">
+          <Gallary />
+        </div>
+      </Element>
     </main>
   );
 }
