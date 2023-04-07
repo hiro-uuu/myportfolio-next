@@ -7,6 +7,7 @@ import Skill from "@/components/Skill";
 import Header from "@/components/Header";
 import { Element } from "react-scroll";
 import ContactForm from "@/components/Contact/ContactForm";
+import { Divider } from "@mui/material";
 
 export default function Home() {
   return (
@@ -32,6 +33,7 @@ export default function Home() {
           <Gallary />
         </div>
       </Element>
+      <Divider />
       <Element name="contact" className="element">
         <div id="contact">
           <ContactForm />
