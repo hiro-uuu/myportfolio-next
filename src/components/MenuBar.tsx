@@ -61,18 +61,18 @@ export default function MenuBar(props: any) {
             </Typography>
 
             <Box sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}>
-              {pages.map((page) =>
-                page.key === "contact" ? (
-                  <Link key={page.key} href={"/contact"}>
-                    <Button
-                      key={page.key}
-                      sx={{ my: 2, color: "white", display: "block" }}
-                    >
-                      {page.label}
-                    </Button>
-                  </Link>
-                ) : (
-                  // 問い合わせフォーム以外
+              {pages.map(
+                (page) => (
+                  // page.key === "contact" ? (
+                  //   <Link key={page.key} href={"/contact"}>
+                  //     <Button
+                  //       key={page.key}
+                  //       sx={{ my: 2, color: "white", display: "block" }}
+                  //     >
+                  //       {page.label}
+                  //     </Button>
+                  //   </Link>
+                  // ) : (
                   <Button key={page.key}>
                     <Scroll
                       to={page.key}
@@ -85,6 +85,7 @@ export default function MenuBar(props: any) {
                     </Scroll>
                   </Button>
                 )
+                // )
               )}
             </Box>
           </Toolbar>

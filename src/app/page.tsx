@@ -6,6 +6,7 @@ import MapContent from "@/components/MapContent";
 import Skill from "@/components/Skill";
 import Header from "@/components/Header";
 import { Element } from "react-scroll";
+import ContactForm from "@/components/Contact/ContactForm";
 
 export default function Home() {
   return (
@@ -29,6 +30,11 @@ export default function Home() {
       <Element name="gallary" className="element">
         <div id="gallary">
           <Gallary />
+        </div>
+      </Element>
+      <Element name="contact" className="element">
+        <div id="contact">
+          <ContactForm />
         </div>
       </Element>
     </main>

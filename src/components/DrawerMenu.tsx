@@ -13,18 +13,28 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import { Link as Scroll, scroller, Button } from "react-scroll";
 import Link from "next/link";
+import {
+  Apps,
+  Badge,
+  BrowseGallerySharp,
+  Code,
+  Mail,
+} from "@mui/icons-material";
+import { OverridableComponent } from "@mui/material/OverridableComponent";
+import { SvgIconTypeMap } from "@mui/material";
 
 export default function DrawerMenu(props: any) {
   type page = {
     label: string;
     key: string;
+    icon: React.ReactElement;
   };
 
   const pages: page[] = [
-    { label: "プロフィール", key: "profile" },
-    { label: "スキル", key: "skill" },
-    { label: "ギャラリー", key: "gallary" },
-    { label: "お問い合わせ", key: "contact" },
+    { label: "プロフィール", key: "profile", icon: <Badge /> },
+    { label: "スキル", key: "skill", icon: <Code /> },
+    { label: "ギャラリー", key: "gallary", icon: <Apps /> },
+    { label: "お問い合わせ", key: "contact", icon: <Mail /> },
   ];
 
   const handleClick = (page: page) => {
@@ -43,8 +53,9 @@ export default function DrawerMenu(props: any) {
       onKeyDown={props.toggleDrawer(false)}
     >
       <List>
-        {pages.map((page, index) =>
-          page.key !== "contact" ? (
+        {pages.map(
+          (page, index) => (
+            // page.key !== "contact" ? (
             <ListItem key={page.key} disablePadding>
               <ListItemButton
                 onClick={() => {
@@ -54,29 +65,30 @@ export default function DrawerMenu(props: any) {
               >
                 <ListItemIcon>
                   {/* TODO 適当にアイコン設定する */}
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                  {page.icon}
                 </ListItemIcon>
                 <ListItemText primary={page.label} />
               </ListItemButton>
             </ListItem>
-          ) : (
-            <Link key={page.key} href={"/contact"}>
-              <ListItem key={page.key} disablePadding>
-                <ListItemButton
-                  onClick={() => {
-                    handleClick(page);
-                    // props.toggleDrawer(true);
-                  }}
-                >
-                  <ListItemIcon>
-                    {/* TODO 適当にアイコン設定する */}
-                    {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                  </ListItemIcon>
-                  <ListItemText primary={page.label} />
-                </ListItemButton>
-              </ListItem>
-            </Link>
           )
+          // ) : (
+          //   <Link key={page.key} href={"/contact"}>
+          //     <ListItem key={page.key} disablePadding>
+          //       <ListItemButton
+          //         onClick={() => {
+          //           handleClick(page);
+          //           // props.toggleDrawer(true);
+          //         }}
+          //       >
+          //         <ListItemIcon>
+          //           {/* TODO 適当にアイコン設定する */}
+          //           {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+          //         </ListItemIcon>
+          //         <ListItemText primary={page.label} />
+          //       </ListItemButton>
+          //     </ListItem>
+          //   </Link>
+          // )
         )}
       </List>
       <Divider />

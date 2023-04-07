@@ -16,10 +16,10 @@ const Gallary: React.FC = () => {
             url={"https://myportfolio-next-git-main-hiro-uuu.vercel.app/"}
             name={"ポートフォリオ"}
             description={
-              "初めて作成したポートフォリオサイトです。あまり時間をかけず1週間程度で作成しました。興味のあったNext.jsと、使用経験のあるMUIで作成しています。"
+              "初めて作成したポートフォリオサイトです。あまり時間をかけず1週間程度で作成しました。興味のあったNext.jsと、使用経験のあるMUIで作成しています。デプロイ環境はVercelを使いました。"
             }
             title={"ポートフォリオサイト"}
-            media="/portfoliosite.png"
+            media="/portfolio.png"
           />
           <GallaryCard
             url={""}

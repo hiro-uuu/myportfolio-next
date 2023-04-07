@@ -14,7 +14,7 @@ const Map: React.FC = () => {
         }}
       >
         <Typography variant="h6">
-          LeafletやOpenLayersを使用したWebアプリケーションをよく作成していました。
+          地図を埋め込んだWebアプリケーションをよく作成していました。
         </Typography>
         <Typography>
           Leafletを使用して行ったことのある都道府県を表示してみました。
