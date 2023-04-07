@@ -13,7 +13,7 @@ import {
   makeStyles,
 } from "@mui/material";
 import { styled, Theme } from "@mui/material/styles";
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, FormEventHandler } from "react";
 
 type sendData = {
   company: string;
@@ -34,7 +34,7 @@ const ContactForm: React.FC = () => {
   const [openComplete, setOpenComplete] = React.useState(false);
   const [openFailed, setOpenFailed] = React.useState(false);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: any) => {
     event.preventDefault();
     setOpenSending(true);
     // Submit form code goes here
