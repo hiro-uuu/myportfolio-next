@@ -1,11 +1,114 @@
 "use client";
-import dynamic from "next/dynamic";
 import React from "react";
-import { MapContainer, TileLayer, Marker, Popup, useMap } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  Marker,
+  Popup,
+  useMap,
+  GeoJSON,
+  useMapEvents,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { Typography } from "@mui/material";
+import ReactLeafletGoogleLayer from "react-leaflet-google-layer";
+import prefGeoJson from "../assets/pref.json";
+import { Layer, LeafletMouseEvent } from "leaflet";
+import { Feature } from "geojson";
 
 const Map: React.FC = () => {
+  // geojsonを取得
+  const prefData: any = prefGeoJson;
+
+  const defaultStyle = {
+    weight: 2,
+    opacity: 1,
+    color: "green",
+    fillOpacity: 0.1,
+    fillColor: "transparent",
+  };
+  const goneStyle = {
+    weight: 2,
+    opacity: 1,
+    color: "yellow",
+    fillOpacity: 0.1,
+    fillColor: "transparent",
+  };
+
+  // ホバーしたときにアイテムを強調表示します。
+  // const hover = () => {
+  //   // const [position, setPosition] = useState(null)
+  //   const map = useMapEvents({
+  //     mouseover() {
+  //       // setStyle({
+  //       //   weight: 5,
+  //       //   color: '#666',
+  //       //   dashArray: '',
+  //       //   fillOpacity: 0.7
+  //       // });
+  //     },
+  //   });
+
+  //   return;
+  //   //  position === null ? null : (
+  //   //   <Marker position={position}>
+  //   //     <Popup>You are here</Popup>
+  //   //   </Marker>
+  //   // )
+  // };
+
+  // hover();
+
+  const onEachFeature = (feature: Feature, layer: Layer) => {
+    // console.log(feature);
+    if (feature.properties) {
+      layer.bindPopup("Your text or whatever");
+    }
+    layer.on({
+      mouseover: onMouseOver,
+      mouseout: onMouseOut,
+      // click: zoomToFeature,
+    });
+  };
+
+  const onMouseOver = (event: LeafletMouseEvent) => {
+    // console.log(event);
+    // const targetFeature = event.target.feature;
+
+    const layer = event.target;
+    layer.setStyle({
+      fillOpacity: 0.5,
+      fillColor: "red",
+    });
+    // layer.unbindTooltip()
+    // layer.bindTooltip(feature.properties.ZIP, {permanent: true, opacity: 1});
+
+    const name = layer.feature.properties.name;
+    const desc = layer.feature.properties.desc;
+    const tooltipText = name + " : " + desc;
+
+    layer.unbindTooltip();
+    console.log(layer);
+    layer.bindTooltip(tooltipText, {
+      permanent: true,
+      opacity: 1,
+    });
+  };
+
+  const onMouseOut = (event: LeafletMouseEvent) => {
+    const layer = event.target;
+
+    layer.feature.properties.gone
+      ? layer.setStyle(goneStyle)
+      : layer.setStyle(defaultStyle);
+
+    layer.unbindTooltip();
+    // layer.bindTooltip(layer.feature.properties.name, {
+    //   permanent: true,
+    //   opacity: 1,
+    // });
+  };
+
   return (
     <>
       <div
@@ -29,17 +132,33 @@ const Map: React.FC = () => {
       >
         <MapContainer
           center={[35, 135]}
-          zoom={5}
+          zoom={4}
           scrollWheelZoom={false}
           style={{
-            height: 300,
+            height: 350,
             width: "80%",
             padding: 5,
           }}
         >
-          <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          <ReactLeafletGoogleLayer
+            apiKey={process.env.GOOGLE_API}
+            type={"satellite"}
+          />
+          <GeoJSON
+            attribution="&copy; credits due..."
+            data={prefData}
+            onEachFeature={onEachFeature}
+            // style={pathOptions}
+            style={(feature) => {
+              if (feature === undefined) {
+                return defaultStyle;
+              }
+              if (feature.properties.gone === true) {
+                return goneStyle;
+              } else {
+                return defaultStyle;
+              }
+            }}
           />
         </MapContainer>
       </div>
