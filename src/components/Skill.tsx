@@ -13,13 +13,14 @@ import React from "react";
 import ProgressBar from "./ProgressBar";
 
 const Skill: React.FC = () => {
+  // windowの高さを検知する
   return (
     <>
       <Container maxWidth="lg">
         <Grid container direction="column" alignItems="center" spacing={5}>
           <Grid item xs={12} marginTop={10}>
             <Box maxWidth={400}>
-              <Typography variant="h4">触ったことのある技術</Typography>
+              <Typography variant="h4">触ってきた技術</Typography>
               <ProgressBar skill="React" value={75} />
               <ProgressBar skill="C# (.Net Core)" value={50} />
               <ProgressBar skill="GIS (地理情報システム)" value={75} />

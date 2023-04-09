@@ -40,7 +40,7 @@ export default function MenuBar(props: any) {
         <Container maxWidth="xl">
           <Toolbar disableGutters>
             <IconButton color="primary" onClick={props.toggleDrawer(true)}>
-              <Pets sx={{ display: { xs: "none", md: "flex" }, mr: 1 }} />
+              <Pets sx={{ display: { md: "flex" }, mr: 1 }} />
             </IconButton>
             <Typography
               variant="h6"
@@ -49,7 +49,7 @@ export default function MenuBar(props: any) {
               href="/"
               sx={{
                 mr: 2,
-                display: { xs: "none", md: "flex" },
+                display: { md: "flex" },
                 fontFamily: "monospace",
                 fontWeight: 700,
                 letterSpacing: ".3rem",

@@ -24,10 +24,10 @@ const Profile: React.FC = () => {
           justifyContent={"center"}
           spacing={5}
         >
-          <Grid item xs={12} textAlign={"center"} marginTop={10}>
+          <Grid item xs={12} md={12} textAlign={"center"} marginTop={10}>
             <Typography variant="h4">プロフィール</Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <div style={{ justifyContent: "center", display: "flex" }}>
               <Avatar
                 alt="profile"
@@ -47,13 +47,14 @@ const Profile: React.FC = () => {
             >
               <Avatar
                 alt="github"
+                variant="circular"
                 src="/github-mark.png"
                 sx={{ width: 50, height: 50 }}
                 style={{ textAlign: "center" }}
               />
             </div>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <div style={{ justifyContent: "center", display: "flex" }}>
               <Typography variant="h5">自己紹介</Typography>
             </div>
@@ -66,7 +67,7 @@ const Profile: React.FC = () => {
               ・ 愛車のJimnyJB64とドライブ <br />・ ゲーム(ポケモンユナイト)
             </Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <div style={{ justifyContent: "center", display: "flex" }}>
               <Typography variant="h5">経歴</Typography>
             </div>
@@ -79,7 +80,7 @@ const Profile: React.FC = () => {
               <br />
             </Typography>
           </Grid>
-          <Grid item xs={6}>
+          <Grid item xs={12} md={6}>
             <div style={{ justifyContent: "center", display: "flex" }}>
               <Typography variant="h5">メッセージ</Typography>
             </div>
