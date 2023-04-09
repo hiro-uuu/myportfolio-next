@@ -5,30 +5,31 @@ import Footer from "../components/Footer";
 import DrawerMenu from "@/components/DrawerMenu";
 import MenuBar from "@/components/MenuBar";
 import React from "react";
-import { Avatar, Fab, IconButton } from "@mui/material";
+import { Avatar, Fab, IconButton, useMediaQuery } from "@mui/material";
 import { ArrowUpward, ArrowUpwardRounded } from "@mui/icons-material";
 import CssBaseline from "@mui/material/CssBaseline";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
-let isDark = false;
+// let isDark = false;
 // ダークモードならtrue、そうでなければfalse
-if (typeof window !== "undefined") {
-  // Client-side-only code
-  isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
-}
-
-const darkTheme = createTheme({
-  palette: {
-    mode: isDark ? "dark" : "light",
-  },
-});
+// if (typeof window !== "undefined") {
+//   // Client-side-only code
+//   isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+// }
 
 export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  let prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
+
+  const darkTheme = createTheme({
+    palette: {
+      mode: prefersDarkMode ? "dark" : "light",
+    },
+  });
   React.useEffect(() => {
     const handleScroll = () => {
       if (window.pageYOffset > 500) {
