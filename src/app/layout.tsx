@@ -11,8 +11,12 @@ import CssBaseline from "@mui/material/CssBaseline";
 
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 
+let isDark = false;
 // ダークモードならtrue、そうでなければfalse
-const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+if (typeof window !== "undefined") {
+  // Client-side-only code
+  isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
 
 const darkTheme = createTheme({
   palette: {
