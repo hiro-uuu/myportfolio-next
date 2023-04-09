@@ -35,35 +35,7 @@ const Map: React.FC = () => {
     fillColor: "transparent",
   };
 
-  // ホバーしたときにアイテムを強調表示します。
-  // const hover = () => {
-  //   // const [position, setPosition] = useState(null)
-  //   const map = useMapEvents({
-  //     mouseover() {
-  //       // setStyle({
-  //       //   weight: 5,
-  //       //   color: '#666',
-  //       //   dashArray: '',
-  //       //   fillOpacity: 0.7
-  //       // });
-  //     },
-  //   });
-
-  //   return;
-  //   //  position === null ? null : (
-  //   //   <Marker position={position}>
-  //   //     <Popup>You are here</Popup>
-  //   //   </Marker>
-  //   // )
-  // };
-
-  // hover();
-
   const onEachFeature = (feature: Feature, layer: Layer) => {
-    // console.log(feature);
-    if (feature.properties) {
-      layer.bindPopup("Your text or whatever");
-    }
     layer.on({
       mouseover: onMouseOver,
       mouseout: onMouseOut,
@@ -88,11 +60,12 @@ const Map: React.FC = () => {
     const tooltipText = name + " : " + desc;
 
     layer.unbindTooltip();
-    console.log(layer);
-    layer.bindTooltip(tooltipText, {
-      permanent: true,
-      opacity: 1,
-    });
+    if (desc !== undefined) {
+      layer.bindTooltip(tooltipText, {
+        permanent: true,
+        opacity: 1,
+      });
+    }
   };
 
   const onMouseOut = (event: LeafletMouseEvent) => {
