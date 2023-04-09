@@ -7,6 +7,18 @@ import MenuBar from "@/components/MenuBar";
 import React from "react";
 import { Avatar, Fab, IconButton } from "@mui/material";
 import { ArrowUpward, ArrowUpwardRounded } from "@mui/icons-material";
+import CssBaseline from "@mui/material/CssBaseline";
+
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+
+// ダークモードならtrue、そうでなければfalse
+const isDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+
+const darkTheme = createTheme({
+  palette: {
+    mode: isDark ? "dark" : "light",
+  },
+});
 
 export default function RootLayout({
   children,
@@ -71,22 +83,25 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <MenuBar toggleDrawer={toggleDrawer} />
-        <DrawerMenu toggleDrawer={toggleDrawer} stateDrawer={stateDrawer} />
-        {children}
-        <Fab
-          color="primary"
-          style={{
-            position: "fixed",
-            bottom: "30px",
-            right: "16px",
-            display: showButton ? "inline-flex" : "none",
-          }}
-          onClick={handleButtonClick}
-        >
-          <ArrowUpward />
-        </Fab>
-        <Footer />
+        <ThemeProvider theme={darkTheme}>
+          <CssBaseline />
+          <MenuBar toggleDrawer={toggleDrawer} />
+          <DrawerMenu toggleDrawer={toggleDrawer} stateDrawer={stateDrawer} />
+          {children}
+          <Fab
+            color="primary"
+            style={{
+              position: "fixed",
+              bottom: "30px",
+              right: "16px",
+              display: showButton ? "inline-flex" : "none",
+            }}
+            onClick={handleButtonClick}
+          >
+            <ArrowUpward />
+          </Fab>
+          <Footer />
+        </ThemeProvider>
       </body>
     </html>
   );
